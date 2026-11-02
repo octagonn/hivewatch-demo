@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hivewatch</title>
+<link rel="stylesheet" href="/static/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='13'>&#128225;</text></svg>">
+</head>
+<body>
+<header class="bar">
+  <div class="brand">
+    <span class="dot" id="link-dot" title="disconnected"></span>
+    <strong>HIVEWATCH</strong>
+    <span class="sub">minecraft threat map &middot; <span id="mode-label">…</span></span>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><span id="k-window">0</span><label>events / 24h</label></div>
+    <div class="kpi"><span id="k-ips">0</span><label>unique sources</label></div>
+    <div class="kpi"><span id="k-logins">0</span><label>login attempts</label></div>
+    <div class="kpi"><span id="k-total">0</span><label>recorded total</label></div>
+  </div>
+</header>
+
+<main>
+  <section class="mapwrap">
+    <canvas id="map"></canvas>
+    <div class="legend">
+      <span><i class="sw probe"></i>probe / ping</span>
+      <span><i class="sw login"></i>login attempt</span>
+      <span><i class="sw malformed"></i>malformed</span>
+      <span><i class="sw scan"></i>scan</span>
+    </div>
+    <div id="empty" class="empty">
+      <p>No hostile traffic recorded yet.</p>
+      <small>The map animates only when something actually arrives.</small>
+    </div>
+  </section>
+
+  <aside class="side">
+    <div class="panel">
+      <h2>Live feed</h2>
+      <ul id="feed" class="feed"></ul>
+    </div>
+    <div class="panel">
+      <h2>Top origins</h2>
+      <ul id="countries" class="bars"></ul>
+    </div>
+    <div class="panel">
+      <h2>Most persistent sources</h2>
+      <ul id="ips" class="rows"></ul>
+    </div>
+    <div class="panel">
+      <h2>Usernames tried</h2>
+      <ul id="users" class="chips"></ul>
+    </div>
+    <div class="panel">
+      <h2>Activity · 24h</h2>
+      <canvas id="spark" height="46"></canvas>
+      <ul id="kinds" class="rows tight"></ul>
+    </div>
+  </aside>
+</main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

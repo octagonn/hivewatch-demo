@@ -1,0 +1,16 @@
+services:
+  hivewatch:
+    build: ./app
+    ports: ["127.0.0.1:8099:8099", "127.0.0.1:25599:25599"]
+    environment:
+      HIVEWATCH_SENTINEL_MODE: honeypot
+      HIVEWATCH_DB: /data/hivewatch.db
+      HIVEWATCH_IPAPI: "0"
+      HIVEWATCH_HOME_LAT: "0"
+      HIVEWATCH_HOME_LON: "0"
+      HIVEWATCH_HOME_LABEL: Demo Lab
+      HIVEWATCH_MC_LOGS: ""
+      HIVEWATCH_INGEST_TOKEN: ${HIVEWATCH_INGEST_TOKEN:-}
+    volumes: ["hivewatch-data:/data"]
+volumes:
+  hivewatch-data:
